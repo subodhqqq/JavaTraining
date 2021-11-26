@@ -1,0 +1,16 @@
+package decision1;
+
+public class breakContinue {
+	public void brkcon()
+	{
+		for(int i=0;i<10;i++)
+		{
+			if(i==3)
+			{
+				System.out.println("stop");
+				break;
+			}
+		}
+	}
+
+}

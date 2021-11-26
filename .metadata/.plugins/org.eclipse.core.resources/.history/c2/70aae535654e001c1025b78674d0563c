@@ -1,0 +1,10 @@
+package classwork;
+
+public class Hello {
+	public void  hello(String a)
+	{
+		String b="hello";
+		System.out.println(b+" "+a);
+	}
+
+}
