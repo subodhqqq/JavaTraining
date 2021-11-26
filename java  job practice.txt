@@ -1,0 +1,619 @@
+import java.util.*; 
+import java.io.*;
+
+class Main {
+
+  public static int BracketCombinations(int num) {
+    List<String> output = new ArrayList();
+    addParenthesis(output, "", 0, 0, num);
+    return output.size();
+  }
+
+  private static void addParenthesis(List<String> output, String currentString, int open, int close, int max) {
+    if (currentString.length() == max * 2) {
+      output.add(currentString);
+      return;
+    }
+
+    if (open < max) { addParenthesis(output, currentString + "(", open + 1, close, max); }
+    if (close < open) { addParenthesis(output, currentString + ")", open, close + 1, max); }
+  }
+
+  public static void main (String[] args) {  
+    // keep this function call here     
+    Scanner s = new Scanner(System.in);
+    System.out.print(BracketCombinations(s.nextLine())); 
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*; 
+import java.io.*;
+
+class Main {
+
+  static int count;
+  public static int BracketCombinations(int num) {
+    // code goes here
+    count = 0;
+    helper(num, num);
+    return count;
+  }
+
+  public static void helper(int lp, int rp){
+    if(lp>rp) return;
+    if(lp == 0 && rp == 0) {
+      count++;
+      return;
+    }
+    //(
+    if(lp>0){
+      helper(lp-1, rp);
+    }
+    if(rp>0){
+      helper(lp, rp-1);
+    }
+  }
+
+  public static void main (String[] args) {  
+    // keep this function call here     
+    Scanner s = new Scanner(System.in);
+    System.out.print(BracketCombinations(s.nextLine())); 
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*; 
+import java.io.*;
+
+class Main {
+   static int total = 0;
+  public static void BC(int pos, int n, int open, int close){
+    if(close == n){
+      total++;
+      return;
+    }else{
+      if(open > close){
+        BC(pos+1, n, open, close+1);
+      }
+      if(open < n){
+        BC(pos+1, n, open+1, close);
+      }
+    }
+  }
+
+  public static int BracketCombinations(int num) {
+    // code goes here 
+    BC(0, num, 0, 0); 
+    return total;
+  }
+
+  public static void main (String[] args) {  
+    // keep this function call here     
+    Scanner s = new Scanner(System.in);
+    System.out.print(BracketCombinations(s.nextLine())); 
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*; 
+import java.io.*;
+
+class Main {
+  static int total = 0;
+  public static void BC(int pos, int n, int open, int close){
+    if(close == n){
+      total++;
+      return;
+    }else{
+      if(open > close){
+        BC(pos+1, n, open, close+1);
+      }
+      if(open < n){
+        BC(pos+1, n, open+1, close);
+      }
+    }
+  }
+
+  public static int BracketCombinations(int num) {
+    // code goes here 
+
+    BC(0, num, 0, 0);
+
+    return total;
+  }
+
+  public static void main (String[] args) {  
+    // keep this function call here     
+    Scanner s = new Scanner(System.in);
+    System.out.print(BracketCombinations(s.nextLine())); 
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*; 
+import java.io.*;
+
+class Main {
+  static int total = 0;
+  public static void BC(int pos, int n, int open, int close){
+    if(close == n){
+      total++;
+      return;
+    }else{
+      if(open > close){
+        BC(pos+1, n, open, close+1);
+      }
+      if(open < n){
+        BC(pos+1, n, open+1, close);
+      }
+    }
+  }
+
+  public static int BracketCombinations(int num) {
+    // code goes here 
+
+    BC(0, num, 0, 0);
+
+    return total;
+  }
+
+  public static void main (String[] args) {  
+    // keep this function call here     
+    Scanner s = new Scanner(System.in);
+    System.out.print(BracketCombinations(s.nextLine())); 
+  }
+
+
+
+
+
+
+
+function BracketCombinations(num) { 
+  // By Doing sum search i found a formula that can achieve what this problem want
+  // called Catalan number (Catalan Formula)
+  // where catalan formula is ==> (2n!) / (n+1)! n!
+
+  // first i will calculate the factorial of the num
+  let factorial = (n) => {
+    let k = 1;
+    for(var i = n; i >= 1; i--){
+      k *= i;
+    }
+    return k;
+  }
+  
+  // formula going down
+  const result = (factorial(2 * num)) / ((factorial(num + 1)) * (factorial(num)));
+  return result; 
+}
+   
+// keep this function call here 
+console.log(BracketCombinations(readline()));
+
+
+
+
+
+
+
+
+
+
+function BracketCombinations(num) { 
+
+  // code goes here  
+  let count = generateBrackets(0, num, 0, 0, [], []);
+  return count; 
+
+}
+
+function generateBrackets(position, num, open, close, count) {
+  if (close == num){
+    count++;
+    return count;
+  }
+  else {
+    if (open > close) {
+      count = generateBrackets(position+1, num, open, close+1, count);
+    }
+    if (open < num) {
+      count = generateBrackets(position+1, num, open+1, close, count);
+    }
+
+    return count;
+  }
+}
+   
+// keep this function call here 
+console.log(BracketCombinations(readline()));
+
+
+
+
+
+
+
+
+let output = 0;
+const strings = [];
+function combos(str, open, close = 0) {
+  if (open === 0 && close === 0) {
+    output += 1;
+    strings.push(str);
+  }
+
+  if (open > 0) {
+    combos(`${str}(`, open - 1, close + 1);
+  }
+
+  if (close > 0) {
+    combos(`${str})`, open, close - 1);
+  }
+}
+
+function BracketCombinations(num) {
+  combos('', num);
+  return output;
+}
+
+// keep this function call here 
+console.log(BracketCombinations(readline()));
+
+
+
+
+
+
+
+function BracketCombinations(num){
+  let output = 0;
+  function recurse(open,close=0) { 
+    //console.log(open,close)
+    if(open === 0 && close === 0) {
+     output+= 1
+    }
+    if(open > 0){
+      recurse(open-1,close+1);
+    }
+    if(close > 0){
+      recurse(open,close-1);
+    }
+    // code goes here  
+  }
+  recurse(num)
+  return output;
+} 
+// keep this function call here 
+console.log(BracketCombinations(readline()));
+
+
+
+
+
+
+
+
+
+
+
+
+function BracketCombinations(num) { 
+
+  const ns= [0,1,2];
+  for (let i = 3; i <= num; i++) {
+    let sum = ns[i-1] * 2; // () times i-1 combinations, i-1 times ()
+    //console.log(sum);
+    for (let j = 1; j < i-1; j++) {
+      //console.log(j);
+      sum += ns[j] * ns[i - j - 1];
+    }
+    ns.push(sum);
+  }
+  return ns[num];
+
+}
+   
+// keep this function call here 
+console.log(BracketCombinations(readline()));
+
+
+
+
+
+
+
+
+
+function BracketCombinations(num) {
+    if (!num) {
+        return 1;
+    }
+    var totalLength = num * 2;
+    var maxNum = Math.pow(2, totalLength);
+    var fullArr = [];
+    for (var i = maxNum / 2; i < maxNum; i++) {
+        fullArr.push(i.toString(2));
+    }
+    fullArr = fullArr.filter(function(val) {
+        val = val.replace(/1/g, '(')
+            .replace(/0/g, ')')
+        var valArr = val.split('');
+        return evaluator(valArr);
+
+    });
+    return fullArr.length;
+
+}
+//evaluator takes an array of '(' and ')' and determines whether they could be a
+//bracket sequence, where
+function evaluator(arr) {
+    var count = 0;
+    var ind = 0;
+    var len = arr.length;
+
+    while (ind < len) {
+        if (arr[ind] === '(') {
+            count++;
+        } else {
+            count--;
+        }
+        if (count < 0) {
+            return false;
+        }
+        ind++
+    }
+    return !count ? true : false;
+}
+
+
+   
+// keep this function call here 
+BracketCombinations(readline())
+
+
+
+
+
+
+function BracketCombinations(num) { 
+
+  // code goes here  
+  const ns= [0,1,2];
+  for (let i = 3; i <= num; i++) {
+    let sum = ns[i-1] * 2; // () times i-1 combinations, i-1 times ()
+    //console.log(sum);
+    for (let j = 1; j < i-1; j++) {
+      //console.log(j);
+      sum += ns[j] * ns[i - j - 1];
+    }
+    ns.push(sum);
+  }
+  return ns[num];
+}
+   
+// keep this function call here 
+console.log(BracketCombinations(readline()));
+
+
+
+
+
+
+function BracketCombinations(num) {
+  if (!num) return 1
+  let solutions = [];
+
+  let length = num * 2
+  let combinationsLength = Math.pow(2, length)
+  let arrayOfCombinations = []
+  for (let i = combinationsLength / 2; i < combinationsLength; i++) {
+    arrayOfCombinations.push(i.toString(2))
+  }
+  arrayOfCombinations.forEach(num => {
+    let result = []
+    for (let i = 0; i < num.length; i++) {
+      if (num[i] === '1') result.push('(')
+      else result.push(')')
+    }
+    check(result)
+  })
+
+  function check(state) {
+    let copy = state.slice()
+    let deleteCheck = true;
+    while (deleteCheck) {
+      deleteCheck = false;
+      for (let i = 1; i < copy.length; i++) {
+        if (copy[i] === ')' && copy[i - 1] === '(') {
+          copy.splice(i - 1, 2)
+          deleteCheck = true
+        }
+      }
+    }
+    if (copy.length === 0) {
+      solutions.push(state.join(''))
+    }
+  }
+  return solutions.length
+}
+
+// keep this function call here 
+console.log(BracketCombinations(readline()));
+
+
+
+
+
+
+
+
+
+
+
+function BracketCombinations(num) { 
+
+  // code goes here  
+  count = 0;
+  n = 2**(2*num);
+  for (iperm=0; iperm<n; iperm++){
+    sum = 0;
+    i = iperm;
+    for (dig = 2*num; dig > 0; dig --){
+      bit = i % 2;
+      i -= bit;
+      i /= 2;
+      sum = sum + (bit == 0?1:-1);
+      if(sum<0){break; };
+    };
+    count += (sum ==0)?1:0;
+  };
+  return count; 
+}
+   
+// keep this function call here 
+console.log(BracketCombinations(readline()));
+
+
+
+
+
+
+
+
+
+
+
+
+
+function BracketCombinations(num) { 
+
+    // https://en.wikipedia.org/wiki/Catalan_number
+    return (1 / (num + 1)) * choose(2 * num, num);
+}
+
+function factorial(num) {
+    let sum = 1;
+    for (let i = 1; i <= num; i++) {
+        sum *= i;
+    }
+    return sum;
+}
+
+function choose(num, k) {
+    return factorial(num) / (factorial(k) * factorial(num - k));
+}
+   
+// keep this function call here 
+BracketCombinations(readline());
+
+
+
+
+
+
+https://coderbyte.com/solution/Bracket%20Combinations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
