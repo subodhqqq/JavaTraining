@@ -6,7 +6,7 @@ public class Result {
 		// TODO Auto-generated method stub
 		SeeResult sr=new SeeResult();
 		sr.result();
-
+    
 	}
 
 }
