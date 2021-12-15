@@ -16,8 +16,7 @@ public class Result {
 		//m.math();
 //	    CountString cs=new CountString();
 //	    System.out.println(cs.count());
-		FileReader1 f=new FileReader1();
-		((FileReader1) f).fec();
+	
 	}
 
 }
